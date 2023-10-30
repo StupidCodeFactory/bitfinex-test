@@ -1,0 +1,31 @@
+{
+  "name": "bitfinex-test",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "grenache-grape": "^0.9.12",
+    "grenache-nodejs-http": "^0.7.13",
+    "grenache-nodejs-link": "^1.0.0",
+    "uuid": "^9.0.1"
+  },
+  "scripts": {
+    "build": "babel src -d dist",
+    "server:dev": "NODE_PATH=src nodemon --exec babel-node src/server/index.js",
+    "test": "NODE_PATH=src ./node_modules/.bin/mocha"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/register": "^7.22.15",
+    "async": "^3.2.4",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.1",
+    "sinon": "^17.0.0"
+  }
+}

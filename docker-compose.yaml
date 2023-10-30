@@ -1,0 +1,35 @@
+services:
+  grape_one:
+    build:
+      dockerfile: Dockerfile.grape
+      args:
+        DHT_PORT: 20001
+        API_PORT: 30001
+        BOOTSTRAP_NODES: grape_two:20002
+    ports:
+      - 20001:20001
+      - 30001:30001
+      
+  grape_two:
+    build:
+      dockerfile: Dockerfile.grape
+      args:
+        DHT_PORT: 20002
+        API_PORT: 30002
+        BOOTSTRAP_NODES: grape_one:20001
+    ports:
+      - 20002:20002
+      - 30002:30002
+    depends_on:
+      - grape_one
+      
+      
+  order-book-service:
+    build: .
+    command: yarn server:dev
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - grape_one
+      - grape_two
