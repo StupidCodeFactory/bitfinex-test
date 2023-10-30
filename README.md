@@ -3,6 +3,7 @@
 #### boot Grape nodes:
 
 ```bash
+cp .env.example .env
 docker-compose up
 ```
 #### install dependencies
